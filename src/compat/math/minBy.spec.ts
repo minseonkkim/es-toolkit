@@ -67,4 +67,39 @@ describe('minBy', () => {
   it('should return undefined when every value is NaN', () => {
     expect(minBy([NaN, NaN], x => x)).toBeUndefined();
   });
+
+  it('should skip symbol values', () => {
+    const sym = Symbol('a');
+    expect(minBy([sym, 3, 1, 2], x => x)).toBe(1);
+    expect(minBy([3, sym, 1, 2], x => x)).toBe(1);
+  });
+
+  it('should return undefined when every value is a symbol', () => {
+    expect(minBy([Symbol('a'), Symbol('b')], x => x)).toBeUndefined();
+  });
+
+  it('should skip null and undefined values, matching lodash', () => {
+    // Positive values so `null` (coerced to 0) would wrongly win as the min on the old code.
+    expect(minBy([{ a: undefined }, { a: 5 }, { a: null }], 'a')).toEqual({ a: 5 });
+    expect(minBy([5, undefined, 3, null], x => x)).toBe(3);
+  });
+
+  it('should return undefined when the iteratee yields no comparable value', () => {
+    // A missing key makes the iteratee return `undefined` for every element.
+    expect(minBy([{ a: 1 }, { a: 2 }], 'b')).toBeUndefined();
+    expect(minBy([{ a: undefined }, { a: undefined }], 'a')).toBeUndefined();
+    expect(minBy([{ a: null }, { a: null }], 'a')).toBeUndefined();
+  });
+
+  it('should call the iteratee with only the element, like lodash', () => {
+    const args: unknown[][] = [];
+    minBy(['a', 'b'], (...rest: unknown[]) => {
+      args.push(rest);
+      return 0;
+    });
+    expect(args).toEqual([['a'], ['b']]);
+
+    // `parseInt` would treat an index as its radix
+    expect(minBy(['10', '9', '11'], parseInt)).toBe('9');
+  });
 });

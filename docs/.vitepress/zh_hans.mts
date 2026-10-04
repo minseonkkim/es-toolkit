@@ -9,10 +9,12 @@ const labels: SidebarLabels = {
     installation: '安装和使用',
     bundleSize: '包体积',
     performance: '性能',
+    browserSupport: '浏览器支持',
     aiIntegration: 'AI 集成',
   },
   categories: {
     array: '数组工具',
+    bigint: 'BigInt 工具',
     function: '函数工具',
     map: 'Map 工具',
     math: '数学工具',
@@ -23,6 +25,9 @@ const labels: SidebarLabels = {
     string: '字符串工具',
     util: '工具函数',
     error: '错误',
+    'types:objects': '对象',
+    'types:values': '值',
+    'types:predicate': '类型判断',
   },
 };
 

@@ -49,9 +49,9 @@ export function minBy<T>(items: ArrayLike<T> | null | undefined, iteratee: Value
 
   for (let i = 0; i < array.length; i++) {
     const element = array[i];
-    const current = getValue(element, i, array);
+    const current = getValue(element);
 
-    if (Number.isNaN(current)) {
+    if (current == null || Number.isNaN(current) || typeof current === 'symbol') {
       continue;
     }
 

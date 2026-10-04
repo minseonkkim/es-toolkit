@@ -9,10 +9,12 @@ const labels: SidebarLabels = {
     installation: '설치 및 사용 방법',
     bundleSize: '번들 사이즈',
     performance: '성능',
+    browserSupport: '브라우저 지원',
     aiIntegration: 'AI 활용',
   },
   categories: {
     array: '배열',
+    bigint: 'BigInt',
     function: '함수',
     map: 'Map',
     math: '숫자',
@@ -23,6 +25,9 @@ const labels: SidebarLabels = {
     string: '문자열',
     util: '유틸리티',
     error: '에러',
+    'types:objects': '객체',
+    'types:values': '값',
+    'types:predicate': '타입 판정',
   },
 };
 

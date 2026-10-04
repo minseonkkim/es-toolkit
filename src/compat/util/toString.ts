@@ -1,3 +1,5 @@
+import { baseToString } from '../_internal/baseToString.ts';
+
 /**
  * Converts `value` to a string.
  *
@@ -19,19 +21,5 @@ export function toString(value: any): string {
     return '';
   }
 
-  if (typeof value === 'string') {
-    return value;
-  }
-
-  if (Array.isArray(value)) {
-    return value.map(toString).join(',');
-  }
-
-  const result = String(value);
-
-  if (result === '0' && Object.is(Number(value), -0)) {
-    return '-0';
-  }
-
-  return result;
+  return baseToString(value);
 }

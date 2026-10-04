@@ -25,10 +25,14 @@ umd
 .vercel
 /compat
 /array.js
+/bigint.js
 /compat.js
 /error.js
 /fp.js
+/fp/iterator.js
+/fp/iterator.d.ts
 /function.js
+/iterator.js
 /math.js
 /map.js
 /object.js
@@ -38,6 +42,8 @@ umd
 /set.js
 /string.js
 /util.js
+/util/hash.js
+/util/hash.d.ts
 
 /test
 
@@ -45,3 +51,7 @@ umd
 *.log
 
 /CHOICES.md
+
+# browser-compat test artifacts
+/tests/browser-compat/generated
+/tests/browser-compat/dist-fixtures
